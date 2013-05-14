@@ -1,0 +1,10 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %tr
+      %th Room Name
+      %th Occupants
+  %tbody
+    - @rooms.each do |room|
+      %tr
+        %td= link_to room.name, room
+        %td= room.occupants

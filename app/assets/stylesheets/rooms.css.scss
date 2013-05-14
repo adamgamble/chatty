@@ -1,0 +1,35 @@
+// Place all the styles related to the rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.message {
+  margin-bottom: 5px;
+}
+
+.message .profile {
+  border-right: 1px solid #e3e3e3;
+  width: 75px;
+  float: left;
+}
+
+.message .profile p {
+ font-size: 10px;
+ margin-top: 3px;
+}
+
+.message .profile .img-circle {
+  margin-left: 10px;
+}
+
+.message-body > p {
+  float: right;
+  width: 90%;
+}
+
+.message-info > p {
+  float: right;
+  width: 90%;
+  padding-top: 5px;
+  border-top: 1px solid #e3e3e3;
+}
