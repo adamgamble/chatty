@@ -6,8 +6,19 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    .navbar
+    .navbar.navbar-fixed-top
       .navbar-inner
-        %a.brand Chatty
+        .container
+          %a.brand Chatty
+          %ul.nav.pull-right
+            - if current_user
+              %li= link_to "Sign Out", destroy_user_session_path, :method => :delete
+            - else
+              %li= link_to "Sign In", new_user_session_path
+
     .container
+      - flash.each do |alert|
+        .alert
+          %button{type: "button", class: "close", "data-dismiss" => "alert"}= "&times;".html_safe
+          = alert.second
       = yield

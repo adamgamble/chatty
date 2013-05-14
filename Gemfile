@@ -12,6 +12,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 gem 'haml-rails'
 gem 'draper'
+gem 'devise', github: "plataformatec/devise"
 
 group :doc do
   gem 'sdoc', require: false
