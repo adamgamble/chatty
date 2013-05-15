@@ -1,7 +1,8 @@
 require 'celluloid/autostart'
+require_relative 'highlight'
 
 class ChatClient
-  include Celluloid::IO
+  include Celluloid
   include Celluloid::Notifications
   include Celluloid::Logger
 
@@ -30,6 +31,7 @@ class ChatClient
   end
 
   def handle_chat(topic, message)
+    message["data"]["body"] = Highlight.highlight(message["data"]["body"])
     write(message)
   end
 

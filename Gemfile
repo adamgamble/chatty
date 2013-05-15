@@ -14,6 +14,8 @@ gem 'draper'
 gem 'devise', github: "plataformatec/devise"
 gem 'celluloid'
 gem 'reel'
+gem 'redcarpet'
+gem 'pygmentize'
 
 group :doc do
   gem 'sdoc', require: false

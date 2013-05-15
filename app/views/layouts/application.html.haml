@@ -27,4 +27,5 @@
       .navbar-inner
         .container
           %form.navbar-search.pull-left{"newpost" => ""}
-            %input.chat-box{type: "text", placeholder: "Type here"}
+            %textarea.chat-box{type: "text", placeholder: "Type here"}
+            %input{:type => "submit", :name => "submit", :value => "submit"}

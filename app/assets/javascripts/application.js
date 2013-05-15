@@ -23,7 +23,7 @@ var ws = $.websocket("ws://isotope11.selfip.com:23581/", {
                             angular.element($('.messages')).scope().posts.push({username: e.data.username, body: e.data.body, gravatar: $.gravatar(e.data.username).attr("src")});
                             angular.element($('.messages')).scope().$apply();
                             $('body').animate({scrollTop: $(document).height()});
-                            $('a.embed').oembed().removeClass("embed");
+                            $('a:not(.embed)').oembed().addClass("embed");
                           }
                   }
           });
