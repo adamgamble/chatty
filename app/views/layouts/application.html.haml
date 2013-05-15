@@ -1,5 +1,5 @@
 !!!
-%html{"ng-app"=>""}
+%html{"ng-app"=>"chatty", "ng-controller" => "PostsCtrl"}
   %head
     %title Chatty
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
@@ -32,5 +32,5 @@
     .navbar.navbar-fixed-bottom
       .navbar-inner
         .container
-          %form.navbar-search.pull-left
+          %form.navbar-search.pull-left{"newpost" => ""}
             %input.chat-box{type: "text", placeholder: "Type here"}
