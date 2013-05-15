@@ -1,16 +1,23 @@
 !!!
-%html
+%html{"ng-app"=>""}
   %head
     %title Chatty
     = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "http://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js"
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
+    :javascript
+      function clock($scope) {
+        $scope.currentTime = new Date().getTime();
+      }
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
         .container
           %a.brand Chatty
           %ul.nav.pull-right
+            %li{"ng-controller" => "clock"}
+              %a {{currentTime | date:'h:mm:ss a'}}
             - if current_user
               %li= link_to "Sign Out", destroy_user_session_path, :method => :delete
             - else
@@ -22,3 +29,8 @@
           %button{type: "button", class: "close", "data-dismiss" => "alert"}= "&times;".html_safe
           = alert.second
       = yield
+    .navbar.navbar-fixed-bottom
+      .navbar-inner
+        .container
+          %form.navbar-search.pull-left
+            %input.chat-box{type: "text", placeholder: "Type here"}

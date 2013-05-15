@@ -2,10 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.messages {
-  float: left;
-}
-
 .message {
   margin-bottom: 5px;
 }
@@ -35,4 +31,8 @@
   width: 90%;
   padding-top: 5px;
   border-top: 1px solid #e3e3e3;
+}
+
+.chat-box {
+  width: 925px;
 }
