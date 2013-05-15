@@ -11,7 +11,7 @@ chatty.directive("newpost", function() {
       $('.chat-box').val("");
       $('body').animate({scrollTop: $(document).height()});
       scope.$apply();
-      $('a.embed').oembed();
+      $('a.embed').oembed().removeClass("embed");
     });
   }
 });
