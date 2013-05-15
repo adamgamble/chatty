@@ -1,2 +1,4 @@
 .messages
   = render "message"
+:javascript
+  $('body').data('email', "#{current_user.email}");

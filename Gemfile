@@ -13,6 +13,8 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'haml-rails'
 gem 'draper'
 gem 'devise', github: "plataformatec/devise"
+gem 'celluloid'
+gem 'reel'
 
 group :doc do
   gem 'sdoc', require: false

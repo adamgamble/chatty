@@ -1,17 +1,15 @@
 var chatty = angular.module('chatty', []);
 
 chatty.factory('Posts', function() {
-  return [{username: "Adam Gamble", body: "now is the time for all good men to come to the aid of their country"}];
+  return [];
 });
 
 chatty.directive("newpost", function() {
   return function(scope, element, attrs) {
     element.bind("submit", function() {
-      scope.posts.push({username: "Adam Gamble", body: $('.chat-box').val()})
+      message = {username: $('body').data('email'), body: $('.chat-box').val(), gravatar: $.gravatar($('body').data('email')).attr('src')};
       $('.chat-box').val("");
-      $('body').animate({scrollTop: $(document).height()});
-      scope.$apply();
-      $('a.embed').oembed().removeClass("embed");
+      ws.send("chat", message);
     });
   }
 });
@@ -19,3 +17,4 @@ chatty.directive("newpost", function() {
 function PostsCtrl($scope, Posts) {
   $scope.posts = Posts;
 }
+

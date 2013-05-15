@@ -1,6 +1,7 @@
 .message.well{"ng-repeat" => "post in posts"}
   .profile
-    =image_tag "http://placekitten.com/g/50/50", class: "img-circle"
+    :plain
+      <img src={{post.gravatar}} class="img-circle"/>
     %p {{post.username}}
   .message-body
     %p{"ng-bind-html-unsafe" => "post.body"} 
