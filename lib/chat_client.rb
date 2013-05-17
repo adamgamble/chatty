@@ -1,4 +1,5 @@
 require 'celluloid/autostart'
+require 'uuidtools'
 require_relative 'highlight'
 
 class ChatClient
@@ -11,7 +12,9 @@ class ChatClient
     puts "Chat client joined"
     @socket = websocket
     subscribe("chat", :handle_chat)
+    subscribe("video", :handle_video)
     play_back_history
+    @uuid = UUIDTools::UUID.random_create
     async.run
   end
 
@@ -29,8 +32,15 @@ class ChatClient
     case message["type"]
     when "chat"
       publish("chat", message)
-    else
+    when "video"
+      message = {"type" => "video", "data" => {"uuid" => @uuid.to_s, "video_data" => message["data"]}}
+      publish("video", message)
     end
+  end
+
+  def handle_video(topic, message)
+    return if message["data"]["uuid"] == @uuid.to_s
+    write(message)
   end
 
   def handle_chat(topic, message)

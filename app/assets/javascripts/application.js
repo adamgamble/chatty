@@ -28,6 +28,15 @@ var ws = $.websocket("ws://" + window.location.hostname + ":1234/", {
                     total_users: function(e) {
                           angular.element($('.messages')).scope().users = $.map(e.data, function(a) { $.gravatar(a).attr('src');});
                           angular.element($('.messages')).scope().$apply();
+                    },
+                    video: function(e) {
+                      current_video = $('.videos > .' + e.data.uuid);
+                      if (current_video.length == 0) {
+                        videos = $('.videos');
+                        current_video = $('<img>').addClass(e.data.uuid);
+                        videos.append(current_video);
+                      }
+                      current_video.attr("src", e.data.video_data);
                     }
                   }
           });

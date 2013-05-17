@@ -17,6 +17,7 @@ gem 'reel'
 gem 'redcarpet'
 gem 'pygmentize'
 gem 'thin'
+gem 'uuidtools'
 
 group :doc do
   gem 'sdoc', require: false
