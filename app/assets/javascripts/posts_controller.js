@@ -4,6 +4,10 @@ chatty.factory('Posts', function() {
   return [];
 });
 
+chatty.factory('Users', function() {
+  return [{gravatar: $.gravatar('adamgamble@gmail.com').attr('src')}];
+});
+
 chatty.directive("newpost", function() {
   return function(scope, element, attrs) {
     element.bind("submit", function() {
@@ -14,7 +18,8 @@ chatty.directive("newpost", function() {
   }
 });
 
-function PostsCtrl($scope, Posts) {
+function PostsCtrl($scope, Posts, Users) {
   $scope.posts = Posts;
+  $scope.users = Users;
 }
 

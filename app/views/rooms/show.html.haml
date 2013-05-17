@@ -1,4 +1,10 @@
-.messages
-  = render "message"
+.span10
+  .messages
+    = render "message"
+.users-list.well
+  %ul
+    %li{"ng-repeat" => "user in users"}
+      :plain
+        <img src={{user.gravatar}} class="img-circle"/>
 :javascript
   $('body').data('email', "#{current_user.email}");
