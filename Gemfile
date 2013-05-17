@@ -16,6 +16,7 @@ gem 'celluloid'
 gem 'reel'
 gem 'redcarpet'
 gem 'pygmentize'
+gem 'thin'
 
 group :doc do
   gem 'sdoc', require: false

@@ -6,9 +6,12 @@ class ChatClient
   include Celluloid::Notifications
   include Celluloid::Logger
 
-  def initialize(websocket)
+  def initialize(websocket, chat_logger)
+    @chat_logger = chat_logger
+    puts "Chat client joined"
     @socket = websocket
     subscribe("chat", :handle_chat)
+    play_back_history
     async.run
   end
 
@@ -43,5 +46,11 @@ class ChatClient
   rescue Errno::EPIPE
     info "Pipe was broken, terminating"
     terminate
+  end
+
+  def play_back_history
+    @chat_logger.history.each do |message|
+      handle_chat(nil, {"type" => "chat", "data" => {"username" => message.user.email, "body" => message.body}})
+    end
   end
 end

@@ -17,7 +17,7 @@
 //= require gravatar
 //= require_tree .
 
-var ws = $.websocket("ws://isotope11.selfip.com:23581/", {
+var ws = $.websocket("ws://" + window.location.hostname + ":1234/", {
           events: {
                     chat: function(e) {
                             angular.element($('.messages')).scope().posts.push({username: e.data.username, body: e.data.body, gravatar: $.gravatar(e.data.username).attr("src")});

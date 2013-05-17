@@ -6,6 +6,7 @@ class WebSocketServer < Reel::Server
 
   def initialize(host = "0.0.0.0", port = 1234)
     info "Websockets server starting on #{host}:#{port}"
+    @chat_logger = ChatLogger.new
     super(host, port, &method(:on_connection))
   end
 
@@ -29,7 +30,7 @@ class WebSocketServer < Reel::Server
   def route_websocket(socket)
     info 'handling route_websocket'
     if socket.url == "/"
-      ChatClient.new(socket)
+      ChatClient.new(socket, @chat_logger)
       info "started client"
     else
       info "Received invalid WebSocket request for: #{socket.url}"

@@ -1,11 +1,11 @@
 development:
   adapter: postgresql
   database: chatty_development
-  host: localhost
+  username: postgres
 
 test:
   adapter: postgresql
   encoding: unicode
   database: chatty_test
   pool: 5
-  host: localhost
+  username: postgres
